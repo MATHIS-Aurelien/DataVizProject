@@ -14,3 +14,11 @@
     float: left;
     width: 50%;
 }
+
+#MultiviewContainer .scatterplotDivContainer{
+    width: 42%;
+}
+
+#MultiviewContainer .treemapDivContainer{
+    width: 58%;
+}

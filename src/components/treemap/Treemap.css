@@ -1,8 +1,8 @@
-.scatterplotDivContainer{
+.treemapDivContainer{
     height: 100%;
 }
 
-.scatterplotTooltip{
+.treemapTooltip{
     position: absolute;
     pointer-events: none;
     opacity: 0;
@@ -17,9 +17,9 @@
     z-index: 10;
 }
 
-.brushG .selection{
-    fill: #4e79a7;
-    fill-opacity: 0.2;
-    stroke: #1f4e79;
+.treemapBrushG .selection{
+    fill: #30527a;
+    fill-opacity: 0.18;
+    stroke: #1b3657;
     stroke-width: 1.2;
 }
