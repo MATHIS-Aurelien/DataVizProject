@@ -94,13 +94,11 @@ class TreemapD3 {
     }
 
     getPopulationWeight(itemData){
-        const population = this.getPopulationValue(itemData);
-        if (population <= 0) {
-            return 0;
-        }
         const effectiveMin = Math.min(this.minPopulationWeight, this.maxPopulationWeight);
         const effectiveMax = Math.max(this.minPopulationWeight, this.maxPopulationWeight);
-        const withMin = Math.max(effectiveMin, population);
+        const population = this.getPopulationValue(itemData);
+        const safePopulation = population > 0 ? population : effectiveMin;
+        const withMin = Math.max(effectiveMin, safePopulation);
         return Math.min(effectiveMax, withMin);
     }
 

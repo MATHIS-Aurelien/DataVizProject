@@ -190,6 +190,9 @@ class ScatterplotD3 {
         const hasSelection = this.selectedIndexSet.size > 0;
         this.svg.selectAll(".markerG")
             .style("opacity", (itemData)=>{
+                if (this.hoveredIndex === itemData.index) {
+                    return 1;
+                }
                 if (!hasSelection) {
                     return this.defaultOpacity;
                 }
@@ -198,6 +201,9 @@ class ScatterplotD3 {
         ;
 
         this.svg.selectAll(".markerCircle")
+            .attr("r", (itemData)=>{
+                return this.hoveredIndex === itemData.index ? this.circleRadius + 2 : this.circleRadius;
+            })
             .attr("stroke", (itemData)=>{
                 return this.hoveredIndex === itemData.index ? "#1f77b4" : "red";
             })
@@ -208,6 +214,13 @@ class ScatterplotD3 {
                 return this.selectedIndexSet.has(itemData.index) ? 2 : 0;
             })
         ;
+
+        this.svg.selectAll(".markerG")
+            .sort((a, b)=>{
+                const aHovered = a.index === this.hoveredIndex ? 1 : 0;
+                const bHovered = b.index === this.hoveredIndex ? 1 : 0;
+                return aHovered - bHovered;
+            });
     }
 
     highlightSelectedItems(selectedItems){
